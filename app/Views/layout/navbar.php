@@ -1,27 +1,17 @@
-<div class="container-nav">
-    <header class="container">
-        <div class="nav-brand">
-            <b>
-                <img src="/img/gogreeen.png" alt="" >
-            </b>
-        </div> 
-        <div class="menu-icons">
-        <i class="ph ph-list"></i>
-        </div>
-        <nav class="navbar-nav">
-            <b>
-                <a class="nav-link active" href="/">Home</a>
-                <a class="nav-link" href="/Pages/about">About</a>
-                <a class="nav-link" href="/Pages/contact">Berita</a>
-                <a class="nav-link" href="/kontak">Kontak</a>
-            </b>
+<header>
+        <nav id="menu">
+            <div class="logo">
+                <a href="#"><img src="/img/20231112_182733.png" alt=""></a>
+            </div>
+            <input type="checkbox" name="" id="Responsive-menu">
+            <label for="Responsive-menu"></label>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Berita</a></li>
+                <li><a href="#">Kontak</a></li>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Register</a></li>
+            </ul>
         </nav>
-        <div class="login-user">
-            <b>
-            <a class="login" href="/Pages/Login">Login</a>
-            <a class="register" href="/Pages/Register"><button>Register</button></a>
-            </b>           
-        </div>
     </header>
-
-</div>
