@@ -34,6 +34,7 @@
             </div>
         </div>
         <div class="cards-news" id="cards-news">
+            <h2>NEWS</h2>
             <div class="cards-all">
                 <div class="card" style="width: 18rem;">
                     <img src="/img/download.jpeg" class="card-img-top" alt="...">

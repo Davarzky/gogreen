@@ -129,9 +129,16 @@ header{
     max-width: 25%;
     margin-left: 10%;
 }
-
+.cards-news{
+    background-color: #1D6B02;
+}
+.cards-news h2{
+    margin-left: 44%;
+    color: white;
+}
 .card{
-    margin-left: 10%;
+    margin-top: 3%;
+    margin-left: 8%;
 }
 .cards-all{
     display: flex;

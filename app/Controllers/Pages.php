@@ -12,6 +12,12 @@ class Pages extends BaseController
       
         echo view('home',$data);
     }
+    public function login()
+    {
+        $data = [
+            'title' => 'Login | GoGreen'
+        ];
+    }
 }
         
         
