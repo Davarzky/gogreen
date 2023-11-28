@@ -107,17 +107,17 @@ header{
 }
 .about{
     box-shadow: 0 10px 10px -10px rgb(35, 35,38,0.1);
-    height: 60vh;
+    height: 55vh;
     width: 100vw;
 }
 .head-about h2{
     color: #1D6B02;
     font-size: 34px;
-    margin-top: 20%;
-    margin-left: 30%;
+    margin-top: 15%;
+    margin-left: 25%;
 }
 .text-about {
-    margin-top: 8%;
+    margin-top: 5%;
     margin-left: 5%;
     display: flex;
 }
@@ -131,10 +131,12 @@ header{
 }
 .cards-news{
     background-color: #1D6B02;
+    height: 85vh;
 }
 .cards-news h2{
     margin-left: 44%;
     color: white;
+    margin-top: 10px;
 }
 .card{
     margin-top: 3%;
@@ -142,10 +144,101 @@ header{
 }
 .cards-all{
     display: flex;
-}
+    }
 .card img{
     height: 100%;
     width: 100%;
+}
+.container1 {
+    display: flex;
+}
+.maps{
+    margin-left: -9%;
+    margin-top: 5%;
+}
+.name-email {
+    display: flex;
+}
+
+#name {
+    height: 30px;
+    width: 50vh;
+    margin-left: 5%;
+    margin-top: 8%;
+
+}
+
+#email {
+    height: 30px;
+    width: 51vh;
+    margin-left: 5%;
+    margin-top: 8%;
+
+}
+.container-child{
+margin-left: 48%;
+margin-top: -37%;
+}
+#message{
+margin-top: 2%;
+height: 280px;
+    width: 96vh;
+}
+#subject{
+    height: 30px;
+    width: 96vh;
+}
+.container-child button{
+    height: 35px;
+    width: 100px;
+    margin-top: 5%;
+    margin-left: 90%;
+    border-radius: 180px;
+    color: white;
+    background-color: #1D6B02;
+}
+.text-send{
+    color: #1D6B02;
+    font-size: 30px;
+    text-transform: uppercase;
+    margin-left: 40%;
+    margin-top: 2%;
+}
+.line{
+    border-bottom: 3px solid #1D6B02;
+}
+footer{
+    height: 400px;
+    width: 100vw;
+    background-color: #1D6B02;
+    border-top-right-radius: 180px;
+    border-top-left-radius: 180px;
+    
+    margin-top: 3%;
+}
+.footer img{
+    max-width: 150px;
+    color: white;
+    margin-left: 44%;
+    margin-top: 3%;
+}
+.footer h4{
+    font-size: 20px;
+    margin-left: 25%;
+    margin-top: 3%;
+    color: white;
+}
+.icons{
+    margin-left: 45%;
+    margin-top: 5%;
+}
+.icons h6{
+    margin-left: -80%;
+    margin-top: 2%;
+    color: gray;
+}
+.icons a{
+    color: white;
 }
 
 @media only screen and (min-width: 768px){
