@@ -27,24 +27,46 @@ class UserController extends BaseController
         'username' => $this->request->getPost('username'),
         'email'    => $this->request->getPost('email'),
         'password' => $this->request->getPost('password'),
+        'level'=> $this->request->getPost('level'),
     ];
 
     $model->save($data);
 
     return redirect()->to('/dashboard'); 
 }
-public function delete($id)
-{
+
+
+public function edit($id){
     $model = new UserModel();
 
-    $user = $model->find($id);
+    $data = $model->find($id);
 
-    if ($user) {
-        $model->delete($id);
-        return redirect()->to('/dashboard')->with('success', 'Data pengguna berhasil dihapus.');
-    } else {
-        return redirect()->to('/dashboard')->with('error', 'Data pengguna tidak ditemukan.');
-    }
+
+    return view('pengguna/edit',['data'=>$data]);
 }
+    
+public function update($id){
+    $model = new UserModel();
+
+    $data=[
+        'username' => $this->request->getPost('username'),
+        'email' => $this->request->getPost('email'),
+        'password' => $this->request->getPost('password'),
+        'level' => $this->request->getPost('level'),
+        
+    ];
+    if($model->update($id,$data)){
+        return redirect()->to('dashboard')->with('pesan','Data Berhasil di Update');
+    };
+    return redirect()->back()->with('pesan','data gagal di update');
+}  
+
+public function delete($id){
+    $model = new UserModel();
+
+    $model->delete($id);
+    return redirect()->to('dashboard')->with('pesan','Data Berhasil di Hapus');
+}
+   
 
 }

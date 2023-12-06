@@ -14,4 +14,5 @@ class Dashboard extends BaseController
         echo view('dashboard_view', $data);
         echo view('admin_footer');
     }
+    
 }

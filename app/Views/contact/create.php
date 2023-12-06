@@ -1,11 +1,11 @@
-        <style>
+<style>
             h2{
                 font-size: 30px;
             }
             label{
                 font-size: 20px;
             }
-            #username{
+            #name{
                 height: 35px;
                 width: 70vh;
             }
@@ -13,8 +13,12 @@
                 height: 35px;
                 width: 70vh;
             }
-            #password{
+            #subject{
                 height: 35px;
+                width: 70vh;
+            }
+            #message{
+                height: 100px;
                 width: 70vh;
             }
             button{
@@ -27,14 +31,14 @@
         </style>
        <!-- Formulir Tambah Data Pengguna -->
        <div class="container">
-    <h2 class="my-3">Form Tambah Data Pengguna</h2>
+    <h2 class="my-3">Form Tambah Contact</h2>
 
-    <form action="<?= site_url('pengguna/save') ?>" method="post">
+    <form action="<?= site_url('contact/save') ?>" method="post">
         <!-- Formulir Tambah Data Pengguna -->
         <div class="form-group row">
-            <label for="username" class="col-sm-2 col-form-label">Username</label>
+            <label for="name" class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="username" name="username" required>
+                <input type="text" class="form-control" id="name" name="name" required>
             </div>
         </div>
         <div class="form-group row">
@@ -44,17 +48,16 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="password" class="col-sm-2 col-form-label">Password</label>
+            <label for="subject" class="col-sm-2 col-form-label">Subject</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" id="password" name="password" required>
+                <input type="text" class="form-control" id="subject" name="subject" required>
             </div>
         </div>
         <div class="form-group row">
-            <label for="level" class="col-sm-2 col-form-label">Level</label>
-            <select name="level" id="level">
-                    <option value="admin">admin</option>
-                    <option value="writer">writer</option>
-                </select>
+            <label for="message" class="col-sm-2 col-form-label">Message</label>
+            <div class="col-sm-10">
+                <textarea name="message" id="message" cols="30" rows="10"></textarea>
+            </div>
         </div>
         <div class="form-group row">
             <div class="col-sm-10">

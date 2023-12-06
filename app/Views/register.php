@@ -94,6 +94,9 @@
             color: white;
             background-color: #1D6B02;
         }
+        select{
+    display: none;
+}
     </style>
 </head>
 
@@ -106,7 +109,7 @@
         <div class="body-login">
             <div class="input-login">
                 <div class="Username-login">
-                    <form action="<?= site_url('/home')?>" method="post">
+                    <form action="<?= site_url('/pengguna/save')?> " method="post">
                         <label for="#">Username</label>
                         <br>
                         <input type="text" name="username" id="Username">
@@ -124,6 +127,9 @@
                 <br>
                 <input type="text" name="password" id="Password">
             </div>
+            <select name="level" id="level" >
+                    <option value="users">users</option>
+                </select>
         </div>
     </div>
     <div class="foot-login">

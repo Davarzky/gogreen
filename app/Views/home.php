@@ -66,11 +66,20 @@
         
         
         <?php ;?>
-        <form  method="post"  id="contact" name="contact">
+        
+       
+        
+        <form action="<?= base_url('/contact/save')?>"  method="post"  id="contact" name="contact">
             <h2 class="text-send">Send us a message</h2>
             <div class="line"></div>
             <div class="container">
+            <?php if (session()->getFlashdata('notif')) { ?>
+            <div class="alert alert-success" role="alert">
+                <?= session()->getFlashdata('notif') ?>
+            </div>
+        <?php } ?>
                 <div class="container1">
+               
                     <div class="maps"> <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.9745152231662!2d107.45731867441428!3d-6.524902163787165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e690de1d4181d33%3A0x46b385e69e63b332!2sDuta%20Graha%20Ciseureuh!5e0!3m2!1sid!2sid!4v1700612772285!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
                     <div class="name-email">
                         <input type="text" id="name" placeholder="Name" name="name">

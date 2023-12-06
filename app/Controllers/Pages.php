@@ -37,21 +37,7 @@ class Pages extends BaseController
 
         echo view('contact',$data);
     }
-    public function data()
-    {
-        //object form contact
-    $contact = new ContactModel();
-    $contact->insert([
-        "name"=> $this->request->getPost("name"),
-        "email"=> $this->request->getPost("email"),
-        "subject"=> $this->request->getPost("subject"),
-        "message"=> $this->request->getPost("message"),
-    ]);
-
-     return redirect()->to('/pengguna');
-
-    }
-    
+ 
 }
         
         

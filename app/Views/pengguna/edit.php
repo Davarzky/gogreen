@@ -1,4 +1,6 @@
-        <style>
+
+
+<style>
             h2{
                 font-size: 30px;
             }
@@ -29,32 +31,34 @@
        <div class="container">
     <h2 class="my-3">Form Tambah Data Pengguna</h2>
 
-    <form action="<?= site_url('pengguna/save') ?>" method="post">
+    <form action="<?=site_url('pengguna/edit/'.$data['id'])?>" method="post">
         <!-- Formulir Tambah Data Pengguna -->
         <div class="form-group row">
             <label for="username" class="col-sm-2 col-form-label">Username</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="username" name="username" required>
+                <input type="text" class="form-control" id="username" name="username" value="<?=$data['username'] ?>">
             </div>
         </div>
         <div class="form-group row">
             <label for="email" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
-                <input type="email" class="form-control" id="email" name="email" required>
+                <input type="text" class="form-control" id="email" name="email" value="<?=$data['email']?>">
             </div>
         </div>
         <div class="form-group row">
             <label for="password" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" id="password" name="password" required>
+                <input type="password" class="form-control" id="password" name="password" value="<?=$data['password'] ?>">
             </div>
         </div>
         <div class="form-group row">
             <label for="level" class="col-sm-2 col-form-label">Level</label>
-            <select name="level" id="level">
-                    <option value="admin">admin</option>
-                    <option value="writer">writer</option>
+            <div class="col-sm-10">
+                <select name="level" id="level">
+                    <option value="admin" <?=$data['level']=='admin'?'selected':'' ?>>admin</option>
+                    <option value="writer" <?=$data['level']=='writer'?'selected':'' ?>>writer</option>
                 </select>
+            </div>
         </div>
         <div class="form-group row">
             <div class="col-sm-10">
@@ -62,3 +66,4 @@
             </div>
         </div>
     </form>
+

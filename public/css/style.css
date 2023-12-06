@@ -10,12 +10,15 @@ li a{
 header{
     background: #ffffff;
     box-shadow: 0 10px 10px -10px rgb(35, 35,38,0.1);
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+
 }
 #menu{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
     margin: 0 auto;
     padding: 10px 15px;
     position: relative;
@@ -136,10 +139,10 @@ header{
 .cards-news h2{
     margin-left: 44%;
     color: white;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 .card{
-    margin-top: 3%;
+    margin-top: 5%;
     margin-left: 8%;
 }
 .cards-all{
@@ -241,6 +244,7 @@ footer{
     color: white;
 }
 
+
 @media only screen and (min-width: 768px){
     #menu ul li:last-child a{
         background-color: #1D6B02;
@@ -306,8 +310,11 @@ footer{
     .button-poster{
         margin-left: 35%;
     }
+    .about{
+        height: 70vh;
+    }
     .head-about h2{
-        margin-top: 40%;
+        margin-top: 30%;
         text-align: center;
         margin-right: 30%;
     }
@@ -315,11 +322,18 @@ footer{
         font-size: 15px;
     }
     .text-about img{
+        margin-top: 5%;
         height: 120px;
-        width: 70%;
+        width: 75%;
         margin-right: 10%;
     }
     .card{
         margin-top: 5%;
+    }
+    .name-email{
+        margin-left: -125%;
+    }
+    .container-child{
+        margin-left: -15%;
     }
 }
