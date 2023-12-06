@@ -37,4 +37,12 @@ class ContactController extends BaseController
         return redirect()->back()->with('notif','Pesan Anda telah di Terima');
         // return redirect()->to('/Pages/'); 
     }
+
+    public function delete($id){
+        $model = new ContactModel();
+    
+        $model->delete($id);
+        return redirect()->to('contact/')->with('pesan','Data Berhasil di Hapus');
+    }
+       
 }

@@ -2,10 +2,11 @@
 
 
 <?= $this->section('content'); ?>
+
 <div class="container-home">
     <div class="row">
         <div class="col">
-            <div class="poster">
+            <div class="poster"  id="menu-nav">
                 <div class="subject-poster">
                     <img src="/img/front-background.jpg" alt="">
 
@@ -108,8 +109,7 @@
 
                 </div>
             </footer>
-
-
+          
 
 
 

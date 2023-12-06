@@ -1,5 +1,10 @@
+<?=$this->extend('template/template') ?>
 
+<?= $this->section('content-side') ?>
 
+<section class="section dashboard">
+
+<main id="main" class="main">
 <style>
             h2{
                 font-size: 30px;
@@ -27,6 +32,7 @@
             }
 
         </style>
+
        <!-- Formulir Tambah Data Pengguna -->
        <div class="container">
     <h2 class="my-3">Form Tambah Data Pengguna</h2>
@@ -62,8 +68,10 @@
         </div>
         <div class="form-group row">
             <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary">Tambah Data</button>
+                <button type="submit" class="btn btn-primary">Ubah Data</button>
             </div>
         </div>
     </form>
-
+    </main>
+    </section>
+    <?= $this->endSection(); ?>

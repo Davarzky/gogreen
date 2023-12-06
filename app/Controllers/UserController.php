@@ -11,7 +11,7 @@ class UserController extends BaseController
         $model = new UserModel();
         $data['pengguna'] = $model->findAll();
 
-        return view('dashboard_view', $data);
+        return view('pengguna/index', $data);
     }
 
     public function create()
@@ -32,7 +32,7 @@ class UserController extends BaseController
 
     $model->save($data);
 
-    return redirect()->to('/dashboard'); 
+    return redirect()->to('pengguna/'); 
 }
 
 
@@ -56,7 +56,7 @@ public function update($id){
         
     ];
     if($model->update($id,$data)){
-        return redirect()->to('dashboard')->with('pesan','Data Berhasil di Update');
+        return redirect()->to('pengguna/')->with('pesan','Data Berhasil di Update');
     };
     return redirect()->back()->with('pesan','data gagal di update');
 }  
@@ -65,8 +65,8 @@ public function delete($id){
     $model = new UserModel();
 
     $model->delete($id);
-    return redirect()->to('dashboard')->with('pesan','Data Berhasil di Hapus');
+    return redirect()->to('pengguna/')->with('pesan','Data Berhasil di Hapus');
 }
-   
+ 
 
 }

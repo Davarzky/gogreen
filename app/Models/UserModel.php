@@ -4,8 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UserModel extends Model
-{
+class UserModel extends Model{
+    public function isUsernameExists($username) {
+        return $this->where('username', $username)->countAllResults() > 0;
+    }
+
+    public function isEmailExists($email) {
+        return $this->where('email', $email)->countAllResults() > 0;
+    }
+
     protected $table            = 'Users';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;

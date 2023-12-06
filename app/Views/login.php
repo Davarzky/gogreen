@@ -3,121 +3,176 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GoGreen Technology</title>
     <link rel="website icon" type="png" href="/img/gogreen.png">
-    <style>
-        body {
-            margin: 0;
-        }
-
-        .all-login {
-            height: 350px;
-            width: 350px;
-            box-shadow: 2px 2px 5px black;
-            border-radius: 10px;
-            margin: auto;
-            margin-top: 10%;
-        }
-
-        .head-login {
-            height: 60px;
-            width: 350px;
-            background-color: #1D6B02;
-            border-radius: 10px;
-        }
-
-        .head-login h1 {
-            text-align: center;
-            padding-top: 10px;
-            color: white;
-            font-family: 'Open Sans';
-        }
-
-        h1 {
-            margin: 0;
-        }
-
-        .input-login {
-            margin-top: 15%;
-            margin-left: 20px;
-
-        }
-
-        #Username {
-            height: 30px;
-            width: 300px;
-        }
-
-        #Password {
-            height: 30px;
-            width: 300px;
-        }
-
-        .foot-login {
-            margin-top: 30px;
-            margin-left: 35%;
-        }
-
-        .button-login {
-            height: 30px;
-            width: 100px;
-            border-radius: 10px;
-            background-color: #1D6B02;
-            color: white;
-            border: none;
-        }
-
-        .signup {
-            display: flex;
-            margin-top: -10px;
-            margin-left: -25px;
-        }
-
-        .signup a {
-            margin-top: 22px;
-        }
-
-        .backbutton {
-            height: 35px;
-            width: 100px;
-            border-radius: 180px;
-            color: white;
-            background-color: #1D6B02;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #1D6B02;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    max-width: 850px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.login {
+    width: 400px;
+}
+
+form {
+    width: 250px;
+    margin: 60px auto;
+}
+
+h1 {
+    margin: 20px;
+    text-align: center;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+hr {
+    border-top: 2px solid #1D6B02;
+}
+
+p {
+    text-align: center;
+    margin: 10px;
+}
+
+.right img {
+    width: 450px;
+    height: 100%;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+form label {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 5px;
+}
+
+input {
+    width: 100%;
+    margin: 2px;
+    border: none;
+    outline: none;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+ .backbutton {
+            position: relative;
+            display: inline-block;
+}
+.backbutton img {
+            width: 25px; 
+            height: 25px;
+}
+
+button {
+    border: none;
+    outline: none;
+    padding: 8px;
+    width: 252px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 5px;
+    background: #1D6B02;
+}
+.register{
+        display: flex;
+    }
+.register-1{
+    padding-top: 4%;
+}
+button:hover {
+    background: white;
+    color:#1D6B02 ;
+}
+
+
+
+@media (max-width: 880px) {
+    .container {
+        width: 100%;
+        max-width: 750px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    form {
+        width: 300px;
+        margin: 20px auto;
+    }
+
+    .login {
+        width: 400px;
+        padding: 20px;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .right img {
+        width: 100%;
+        height: 100%;
+    }
+   
+   
+}
+</style>
 <body>
-    <a href="/Pages/"><button class="backbutton">BackButton</button></a>
-    <div class="all-login">
-        <div class="head-login">
-            <h1>Selamat Datang</h1>
-        </div>
-        <div class="body-login">
-            <form action="/Pages/">
-                <div class="input-login">
-                    <div class="Username-login">
-                        <label for="Username">Username</label>
-                        <br>
-                        <input type="text" name="Username" id="Username">
-                    </div>
-                    <br>
-                    <div class="Password-login">
-                        <label for="Password">Password</label>
-                        <br>
-                        <input type="password" name="Password" id="Password">
-                    </div>
-                </div>
-        </div>
-        <div class="foot-login">
-            <a href="/Pages/"><button class="button-login" type="submit">Login</button></a>
-            <div class="signup">
-                <h6>Don't have an account?</h6>
-                <a href="/Pages/register">Sign up</a>
-            </div>
 
+    <div class="container">
+    <div class="backbutton">
+        <a href="/Pages/" class="backbutton">
+            <img src="/img/corner-up-left.svg" alt="">
+        </a>
+    </div>
+        <div class="login">
+            <form action="/Pages/">
+                <h1>Login</h1>
+                <hr>
+                <p>GoGreen Technology</p>
+                <label for="">Email</label>
+                <input type="text" placeholder="example@gmail.com">
+                <label for="">Password</label>
+                <input type="password" placeholder="Password">
+                <button>Login</button>
+                <div class="register">
+                    <p>Don't have an account?</p>
+                     <a href="<?= base_url('register') ?>" class="register-1">Sign Up</a>
+                </div>
+               
             </form>
+        </div>
+        <div class="right">
+            <img src="/img/pict-login.jpg" alt="">
         </div>
     </div>
 </body>
