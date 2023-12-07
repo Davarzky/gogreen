@@ -23,32 +23,39 @@ class Pages extends BaseController
     }
     public function register()
     {
-        $model = new UserModel();
-
-        // ... kode lainnya
+       
+        
+            if (!$this->validate([
+                'username' => [
+                    'rules' => 'required|is_unique[user.username]',
+                    'errors' => [
+                        'required' => '{field} harus di isi',
+                        'is_unique' => '{field} sudah terpakai',
+                    ]
+                    ],
+                    'email' => [
+                        'rules' => 'required',
+                        'errors' => [
+                            'required' => '{field} harus diisi'
+                            ]
+                    ],
+                    'password' => [
+                        'rules' => 'required',
+                        'errors' => [
+                            'required' => '{field} harus diisi'
+                        ]
+                    ],
+            ])){
     
-        $validationRules = [
-            'username' => [
-                'rules' => 'required|alpha_numeric|min_length[3]|is_unique[users.username]',
-                'errors' => [
-                    'is_unique' => 'Username sudah digunakan.',
-                ],
-            ],
-            'email' => [
-                'rules' => 'required|valid_email|is_unique[users.email]',
-                'errors' => [
-                    'is_unique' => 'Email sudah digunakan.',
-                ],
-            ],
-            // ... aturan validasi lainnya
-        ];
+                $validation = \Config\Services::validation();
     
-        if ($this->validate($validationRules)) {
-            // Lanjutkan dengan proses registrasi atau apa pun yang Anda lakukan
-        } else {
-            // Validasi gagal, kembalikan pesan kesalahan atau tindakan yang sesuai
-            return redirect()->to('register')->withInput()->with('validation', $this->validator);
+                session()->setFlashdata('email', $validation->getError('email'));
+                session()->setFlashdata('email', $validation->getError('email'));
+                session()->setFlashdata('password', $validation->getError('password'));
+        return view('register');
+            
         }
+        
     }
     public function contact()
     {

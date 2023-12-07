@@ -160,6 +160,8 @@ button:hover {
             <img src="/img/corner-up-left.svg" alt="">
         </a>
     </div>
+ 
+
         <div class="login">
             <form action="<?=site_url('/pengguna/save') ?>" method="post">
                 <h1>REGISTER</h1>

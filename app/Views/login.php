@@ -166,7 +166,7 @@ button:hover {
                 <button>Login</button>
                 <div class="register">
                     <p>Don't have an account?</p>
-                     <a href="<?= base_url('register') ?>" class="register-1">Sign Up</a>
+                     <a href="/Pages/register" class="register-1">Sign Up</a>
                 </div>
                
             </form>

@@ -21,6 +21,7 @@
                         <a href="#about"> <button class="learn-button">Learn More</button></a>
                         <a href="/Pages/register"><button class="join-button">Join With Us</button></a>
                     </div>
+                    <div id="about-nav"></div>
                 </div>
             </div>
             <div class="about" id="about">
@@ -30,8 +31,9 @@
                 </div>
                 <div class="text-about">
                     <h3>GoGreen Technology, tempat di mana semangat kehijauan dan keberlanjutan <br> berkumpul. Kami percaya bahwa setiap tindakan kecil memiliki dampak besar, dan itulah <br> mengapa kami bersatu untuk merayakan dan mendorong gaya hidup berkelanjutan. Dari <br> tips hemat energi hingga inisiatif penanaman pohon, kami berkomitmen untuk <br> memberdayakan masyarakat dalam upaya menjaga keindahan bumi kita. Bergabunglah <br> dengan kami di perjalanan ini, karena bersama-sama kita dapat menciptakan perubahan <br> positif bagi lingkungan dan generasi mendatang.</h3>
-                    <img src="/img/1575268118.jpg" alt="">
-                </div>
+                    <img src="/img/1575268118.jpg" alt="">                   
+                </div> 
+                <div id="news-nav"></div>            
             </div>
         </div>
         <div class="cards-news" id="cards-news">
@@ -60,11 +62,13 @@
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                         <a href="#" class="btn btn-success">Detail</a>
                     </div>
+        <div id="contact-nav"></div>
+
                 </div>
             </div>
+
         </div>
 
-        
         
         <?php ;?>
         
