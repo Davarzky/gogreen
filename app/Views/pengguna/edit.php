@@ -35,7 +35,7 @@
 
        <!-- Formulir Tambah Data Pengguna -->
        <div class="container">
-    <h2 class="my-3">Form Tambah Data Pengguna</h2>
+    <h2 class="my-3">Form Edit Data Pengguna</h2>
 
     <form action="<?=site_url('pengguna/edit/'.$data['id'])?>" method="post">
         <!-- Formulir Tambah Data Pengguna -->
@@ -63,6 +63,7 @@
                 <select name="level" id="level">
                     <option value="admin" <?=$data['level']=='admin'?'selected':'' ?>>admin</option>
                     <option value="writer" <?=$data['level']=='writer'?'selected':'' ?>>writer</option>
+                    <option value="admin" <?=$data['level']=='users'?'selected':'' ?>>users</option>
                 </select>
             </div>
         </div>

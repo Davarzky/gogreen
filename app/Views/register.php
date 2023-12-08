@@ -168,11 +168,15 @@ button:hover {
                 <hr>
                 <p>GoGreen Technology</p>
                 <label for="">Username</label>
-                <input type="text" name="username">
+                <input type="text" name="username" placeholder="Username" class="form-control <?= session()->getFlashdata('username') ? 'is-invalid' : ''; ?>" value="<?= session()->getFlashdata('username') ? '' : old('username'); ?>">
+                <?= session()->getFlashdata('username'); ?>
                 <label for="">Email</label>
-                <input type="text" placeholder="example@gmail.com" name="email">
+                <input type="text" placeholder="example@gmail.com" name="email" class="form-control <?= session()->getFlashdata('email') ? 'is-invalid' : ''; ?>" value="<?= session()->getFlashdata('email') ? '' : old('email'); ?>">
+                <?= session()->getFlashdata('email'); ?>
                 <label for="">Password</label>
-                <input type="password" placeholder="Password" name="password">
+                <input type="password" placeholder="Password" name="password" class="form-control <?= session()->getFlashdata('password') ? 'is-invalid' : ''; ?>">
+                <?= session()->getFlashdata('password'); ?>
+                
                 <select name="level" id="level">
                     <option value="users">users</option>
                 </select>

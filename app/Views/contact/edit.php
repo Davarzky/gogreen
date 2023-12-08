@@ -1,5 +1,10 @@
+<?= $this->extend('template/template') ?>
 
+<?= $this->section('content-side') ?>
 
+<section class="section dashboard">
+
+<main id="main" class="main">
 <style>
             h2{
                 font-size: 30px;
@@ -7,7 +12,7 @@
             label{
                 font-size: 20px;
             }
-            #username{
+            #name{
                 height: 35px;
                 width: 70vh;
             }
@@ -15,8 +20,12 @@
                 height: 35px;
                 width: 70vh;
             }
-            #password{
+            #subject{
                 height: 35px;
+                width: 70vh;
+            }
+            #message{
+                height: 100px;
                 width: 70vh;
             }
             button{
@@ -29,42 +38,41 @@
         </style>
        <!-- Formulir Tambah Data Pengguna -->
        <div class="container">
-    <h2 class="my-3">Form Tambah Data Pengguna</h2>
+    <h2 class="my-3">Form Edit Contact</h2>
 
-    <form action="<?=site_url('pengguna/edit/'.$data['id'])?>" method="post">
+    <form action="<?=site_url('contact/edit/'.$data['id'])?> " method="post">
         <!-- Formulir Tambah Data Pengguna -->
         <div class="form-group row">
-            <label for="username" class="col-sm-2 col-form-label">Username</label>
+            <label for="name" class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="username" name="username" value="<?=$data['username'] ?>">
+                <input type="text" class="form-control" id="name" name="name" value="<?=$data['name'] ?>">
             </div>
         </div>
         <div class="form-group row">
             <label for="email" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="email" name="email" value="<?=$data['email']?>">
+                <input type="email" class="form-control" id="email" name="email"value="<?=$data['email'] ?>">
             </div>
         </div>
         <div class="form-group row">
-            <label for="password" class="col-sm-2 col-form-label">Password</label>
+            <label for="subject" class="col-sm-2 col-form-label">Subject</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" id="password" name="password" value="<?=$data['password'] ?>">
+                <input type="text" class="form-control" id="subject" name="subject" value="<?=$data['subject'] ?>">
             </div>
         </div>
         <div class="form-group row">
-            <label for="level" class="col-sm-2 col-form-label">Level</label>
+            <label for="message" class="col-sm-2 col-form-label">Message</label>
             <div class="col-sm-10">
-                <select name="level" id="level">
-                    <option value="admin" <?=$data['level']=='admin'?'selected':'' ?>>admin</option>
-                    <option value="writer" <?=$data['level']=='writer'?'selected':'' ?>>writer</option>
-                </select>
+                <textarea class="form-control" name="message" id="message" cols="100" rows="50" ><?=$data['message'] ?></textarea>
             </div>
         </div>
         <div class="form-group row">
             <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary">Ubah Data</button>
+                <button type="submit" class="btn btn-primary">Tambah Data</button>
             </div>
         </div>
     </form>
 
-            
+    </main>
+</section>
+<?= $this->endSection(); ?>

@@ -21,6 +21,15 @@ class ContactController extends BaseController
         {
             return view('contact/create');
         }
+
+        public function edit($id){
+            $model = new ContactModel();
+        
+            $data = $model->find($id);
+        
+        
+            return view('contact/edit',['data'=>$data]);
+        }
     
         public function save()
     {
@@ -37,6 +46,21 @@ class ContactController extends BaseController
         return redirect()->back()->with('notif','Pesan Anda telah di Terima');
         // return redirect()->to('/Pages/'); 
     }
+
+    public function update($id){
+        $model = new ContactModel();
+        $data=[
+            'name' => $this->request->getPost('name'),
+            'email' => $this->request->getPost('email'),
+            'subject' => $this->request->getPost('subject'),
+            'message' => $this->request->getPost('message'),
+            
+        ];
+        if($model->update($id,$data)){
+            return redirect()->to('contact')->with('pesan','Data Berhasil di Update');
+        };
+        return redirect()->back()->with('pesan','data gagal di update');
+    }  
 
     public function delete($id){
         $model = new ContactModel();

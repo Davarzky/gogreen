@@ -1,4 +1,12 @@
-        <style>
+       
+       <?=$this->extend('template/template') ?>
+
+<?= $this->section('content-side') ?>
+
+<section class="section dashboard">
+
+<main id="main" class="main">
+       <style>
             h2{
                 font-size: 30px;
             }
@@ -62,3 +70,6 @@
             </div>
         </div>
     </form>
+    </main>
+    </section>
+    <?= $this->endSection(); ?>

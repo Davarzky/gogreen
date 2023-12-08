@@ -1,3 +1,10 @@
+<?= $this->extend('template/template') ?>
+
+<?= $this->section('content-side') ?>
+
+<section class="section dashboard">
+
+<main id="main" class="main">
 <style>
             h2{
                 font-size: 30px;
@@ -56,7 +63,7 @@
         <div class="form-group row">
             <label for="message" class="col-sm-2 col-form-label">Message</label>
             <div class="col-sm-10">
-                <textarea name="message" id="message" cols="30" rows="10"></textarea>
+                <textarea name="message" id="message" cols="100" rows="50"></textarea>
             </div>
         </div>
         <div class="form-group row">
@@ -65,3 +72,6 @@
             </div>
         </div>
     </form>
+    </main>
+</section>
+<?= $this->endSection(); ?>

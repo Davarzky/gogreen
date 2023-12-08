@@ -11,7 +11,33 @@
                 <li><a href="#news-nav">News</a></li>
                 <li><a href="#contact-nav">Contact</a></li>
                 <li><a href="/Pages/login">Login</a></li>
+                <li class="nav-item dropdown pe-3">
+                  <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                      <span class="d-none d-md-block dropdown-toggle ps-2">Dava Rizky</span>
+                  </a><!-- End Profile Image Icon -->
+      
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                      <li class="dropdown-header">
+                          <h6>GoGreen</h6>
+                      </li>
+                      <li><hr class="dropdown-divider"></li>
+      
+                      <li>
+                          <a class="dropdown-item d-flex align-items-center" href="<?= site_url('/layout/profile') ?>">
+                              <i class="bi bi-person"></i>
+                              <span>My Profile</span>
+                          </a>
+                      </li>
+      
+                      <li>
+                          <a class="dropdown-item d-flex align-items-center" href="#">
+                              <i class="bi bi-box-arrow-right"></i>
+                              <span>Sign Out</span>
+                          </a>
+                      </li>
+                    </ul>
             </ul>
+            
         </nav>
     </header>
     

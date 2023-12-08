@@ -13,6 +13,14 @@ class Pages extends BaseController
       
         echo view('home',$data);
     }
+    public function profile()
+    {
+        $data = [
+            'title' => 'profile | GoGreen'
+        ];
+
+        return view('/layout/profile',$data);
+    }
     public function login()
     {
         $data = [
@@ -22,41 +30,41 @@ class Pages extends BaseController
         echo view('login',$data);
     }
     public function register()
-    {
+{
+   
+    helper(['form', 'url']);
+
+    
+    $model = new UserModel();
+
+    
+    $rules = [
+        'username' => 'required|is_unique[users.username]',
+        'email'    => 'required|valid_email|is_unique[users.email]',
+        'password' => 'required|min_length[6]', 
+    ];
+
+
+    if ($this->validate($rules)) {
+     
+        $data = [
+            'username' => $this->request->getPost('username'),
+            'email'    => $this->request->getPost('email'),
+            'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
+        ];
+
+        
+        $model->save($data);
+
+       
+        return redirect()->to('Pages/');
+    } else {
        
         
-            if (!$this->validate([
-                'username' => [
-                    'rules' => 'required|is_unique[user.username]',
-                    'errors' => [
-                        'required' => '{field} harus di isi',
-                        'is_unique' => '{field} sudah terpakai',
-                    ]
-                    ],
-                    'email' => [
-                        'rules' => 'required',
-                        'errors' => [
-                            'required' => '{field} harus diisi'
-                            ]
-                    ],
-                    'password' => [
-                        'rules' => 'required',
-                        'errors' => [
-                            'required' => '{field} harus diisi'
-                        ]
-                    ],
-            ])){
-    
-                $validation = \Config\Services::validation();
-    
-                session()->setFlashdata('email', $validation->getError('email'));
-                session()->setFlashdata('email', $validation->getError('email'));
-                session()->setFlashdata('password', $validation->getError('password'));
-        return view('register');
-            
-        }
-        
+        return view('register', ['validation' => $this->validator]);
     }
+}
+
     public function contact()
     {
         $data = [
