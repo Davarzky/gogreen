@@ -42,9 +42,10 @@ class ContactController extends BaseController
             'message'=> $this->request->getPost('message'),
         ];
     
-        $model->save($data);
-        return redirect()->back()->with('notif','Pesan Anda telah di Terima');
-        // return redirect()->to('/Pages/'); 
+        if($model->save($data)){
+            return redirect()->to('contact')->with('pesan','Data Berhasil di Update');
+        };
+        return redirect()->back()->with('pesan','data gagal di update');
     }
 
     public function update($id){

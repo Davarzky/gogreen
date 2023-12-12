@@ -40,7 +40,7 @@
        <div class="container">
     <h2 class="my-3">Form Edit Contact</h2>
 
-    <form action="<?=site_url('contact/edit/'.$data['id'])?> " method="post">
+    <form action="<?=site_url('contact/edit'.$data['id'])?> " method="post">
         <!-- Formulir Tambah Data Pengguna -->
         <div class="form-group row">
             <label for="name" class="col-sm-2 col-form-label">Name</label>

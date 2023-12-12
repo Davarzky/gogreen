@@ -6,7 +6,7 @@
 
 <main id="main" class="main">
 <h2 class="my-3">Data Contact</h2>
-<a href="<?= base_url('contact/create') ?>" class="btn btn-primary ms-1">Add Users data</a>
+<a href="<?= base_url('contact/create') ?>" class="btn btn-primary ms-1">Add Contact data</a>
 
 <table class="table">
     <thead>

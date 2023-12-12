@@ -37,31 +37,21 @@
             </div>
         </div>
         <div class="cards-news" id="cards-news">
-            <h2>NEWS</h2>
-            <div class="cards-all">
-                <div class="card" style="width: 18rem;">
-                    <img src="/img/download.jpeg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-success">Detail</a>
-                    </div>
+    <h2>NEWS</h2>
+    <div class="cards-all">
+        <?php foreach ($gambar as $berita): ?>
+            <div class="card" style="width: 18rem;">
+            <img src="<?= base_url('uploads/' . $berita['gambar']) ?>" class="card-img-top" alt="..." height="100px" width="100px">
+
+                <div class="card-body">
+                    <h5 class="card-title"><?= $berita['name'] ?></h5>
+                    <a href="<?= base_url('news/detail')?>" class="btn btn-success">Detail</a>
                 </div>
-                <div class="card" style="width: 18rem;">
-                    <img src="/img/download(1).jpeg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-success">Detail</a>
-                    </div>
-                </div>
-                <div class="card" style="width: 18rem;">
-                    <img src="/img/download(2).jpeg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-success">Detail</a>
-                    </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+
         <div id="contact-nav"></div>
 
                 </div>

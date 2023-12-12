@@ -116,6 +116,8 @@ button:hover {
 
 
 
+
+
 @media (max-width: 880px) {
     .container {
         width: 100%;
@@ -155,14 +157,30 @@ button:hover {
         </a>
     </div>
         <div class="login">
-            <form action="/Pages/">
+            <form action="<?= site_url('/Pages/processLogin')?>" method="post">
                 <h1>Login</h1>
                 <hr>
                 <p>GoGreen Technology</p>
                 <label for="">Email</label>
-                <input type="text" placeholder="example@gmail.com">
+                <input type="text" placeholder="example@gmail.com" name="email" class="form-control <?= session()->getFlashdata('email') ? 'is-invalid' : ''; ?>" value="<?= session()->getFlashdata('email') ? '' : old('email'); ?>">
+                <?php if(isset(session()->getFlashdata('errors')['email'])) :?>
+
+                <?= session()->getFlashdata('errors')['email']; ?>
+
+                <?php endif ?>
+
                 <label for="">Password</label>
-                <input type="password" placeholder="Password">
+                <input type="password" placeholder="Password" name="password" id="password" class="form-control <?= session()->getFlashdata('password') ? 'is-invalid' : ''; ?>">
+               
+
+               
+
+                <?php if(isset(session()->getFlashdata('errors')['password'])) :?>
+
+                <?= session()->getFlashdata('errors')['password']; ?>
+
+                <?php endif ?>
+
                 <button>Login</button>
                 <div class="register">
                     <p>Don't have an account?</p>
@@ -176,5 +194,6 @@ button:hover {
         </div>
     </div>
 </body>
+
 
 </html>

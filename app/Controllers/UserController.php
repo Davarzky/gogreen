@@ -1,11 +1,17 @@
 <?php
 namespace App\Controllers;
 use App\Models\UserModel;
+
 class UserController extends BaseController
 {
     
 
-
+    public function __construct() {
+       if (!session()->has("username")) {
+            // dd(session);
+        return redirect()->to("login");
+       }
+    }
     public function index()
     {
         $model = new UserModel();
@@ -61,12 +67,89 @@ public function update($id){
     return redirect()->back()->with('pesan','data gagal di update');
 }  
 
-public function delete($id){
+public function signout()
+{
+    session()->remove(['id', 'email', 'level', 'isLoggedIn']);
+
+
+    return redirect()->to('Pages/')->with('pesan', 'Anda berhasil logout.');
+}
+
+
+
+public function profile()
+{
+    $session = session();
+    $userId = $session->get('id');
+
+    if (!$userId) {
+        return redirect()->to('/Pages/login');
+    }
+
     $model = new UserModel();
+    $user = $model->find($userId);
 
-    $model->delete($id);
-    return redirect()->to('pengguna/')->with('pesan','Data Berhasil di Hapus');
-}
- 
+    if ($user) {
+        $data = [
+            'title' => 'Profile | GoGreen',
+            'user'  => $user,
+        ];
 
+        echo view('profile', $data);
+    } else {
+        
+         echo 'User not found';
+    }
 }
+
+    public function updateProfile()
+    {
+        $session = session();
+        $userId = $session->get('id');
+    
+        if (!$userId) {
+            return redirect()->to('/Pages/login');
+        }
+    
+        $model = new UserModel();
+        $user = $model->find($userId);
+    
+        if ($this->request->getMethod() === 'post') {
+            $rules = [
+                'username' => 'required',
+                'email'    => 'required|valid_email',
+                'password' => 'min_length[6]',
+            ];
+    
+            if ($this->validate($rules)) {
+                $userUpdate = [
+                    'username' => $this->request->getPost('username'),
+                    'email'    => $this->request->getPost('email'),
+                ];
+    
+                if ($this->request->getPost('password')) {
+                    $userUpdate['password'] = password_hash($this->request->getVar('password'), PASSWORD_DEFAULT);
+                }
+    
+                $model->update($userId, $userUpdate);
+    
+                session()->setFlashdata('success', 'Profile updated successfully!');
+            } else {
+                session()->setFlashdata('errors', $this->validator->getErrors());
+            }
+        }
+    
+        return redirect()->to('/UserController/profile');
+    }
+    public function delete($id){
+        $model = new UserModel();
+    
+        $model->delete($id);
+        return redirect()->to('pengguna/')->with('pesan','Data Berhasil di Hapus');
+    }
+    
+}
+
+
+
+

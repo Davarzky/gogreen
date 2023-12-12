@@ -155,35 +155,48 @@ button:hover {
 </style>
 <body>
     <div class="container">
-    <div class="backbutton">
-        <a href="/Pages/" class="backbutton">
-            <img src="/img/corner-up-left.svg" alt="">
-        </a>
-    </div>
- 
+        <div class="backbutton">
+            <a href="/Pages/" class="backbutton">
+                <img src="/img/corner-up-left.svg" alt="">
+            </a>
+        </div>
 
         <div class="login">
-            <form action="<?=site_url('/pengguna/save') ?>" method="post">
+            <form action="<?= site_url('/Pages/processRegister') ?>" method="post">
+
                 <h1>REGISTER</h1>
                 <hr>
                 <p>GoGreen Technology</p>
-                <label for="">Username</label>
-                <input type="text" name="username" placeholder="Username" class="form-control <?= session()->getFlashdata('username') ? 'is-invalid' : ''; ?>" value="<?= session()->getFlashdata('username') ? '' : old('username'); ?>">
-                <?= session()->getFlashdata('username'); ?>
-                <label for="">Email</label>
-                <input type="text" placeholder="example@gmail.com" name="email" class="form-control <?= session()->getFlashdata('email') ? 'is-invalid' : ''; ?>" value="<?= session()->getFlashdata('email') ? '' : old('email'); ?>">
-                <?= session()->getFlashdata('email'); ?>
-                <label for="">Password</label>
-                <input type="password" placeholder="Password" name="password" class="form-control <?= session()->getFlashdata('password') ? 'is-invalid' : ''; ?>">
-                <?= session()->getFlashdata('password'); ?>
-                
+
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" placeholder="Username" class="form-control <?= session()->getFlashdata('username') ? 'is-invalid' : ''; ?>" value="<?= session()->getFlashdata('username') ? '' : old('username'); ?>">
+                <?php if(isset(session()->getFlashdata('errors')['username'])) :?>
+
+                <?= session()->getFlashdata('errors')['username']; ?>
+
+                <?php endif ?>
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" placeholder="example@gmail.com" class="form-control <?= session()->getFlashdata('email') ? 'is-invalid' : ''; ?>" value="<?= session()->getFlashdata('email') ? '' : old('email'); ?>">
+                <?php if(isset(session()->getFlashdata('errors')['email'])) :?>
+
+                <?= session()->getFlashdata('errors')['email']; ?>
+
+                <?php endif ?>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Password" class="form-control <?= session()->getFlashdata('password') ? 'is-invalid' : ''; ?>">
+                <?php if(isset(session()->getFlashdata('errors')['password'])) :?>
+
+                <?= session()->getFlashdata('errors')['password']; ?>
+
+                    <?php endif ?>
                 <select name="level" id="level">
                     <option value="users">users</option>
                 </select>
+
                 <button>Register</button>
                 <div class="login">
                     <p>Already have an account?</p>
-                     <a href="/Pages/login" class="login-1">Sign in</a>
+                    <a href="/Pages/login" class="login-1">Sign in</a>
                 </div>
             </form>
         </div>
@@ -192,5 +205,4 @@ button:hover {
         </div>
     </div>
 </body>
-
 </html>
