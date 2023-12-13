@@ -7,10 +7,11 @@
 <main id="main" class="main">
 
 <!-- Tabel Data Pengguna -->
-<h2 class="my-3">News Data</h2>
-<a href="<?= base_url('news/create') ?>" class="btn btn-primary ms-1">Add News</a>
+<h2 class="my-3 ">News Data</h2>
+<a href="<?= base_url('news/create') ?>" class="btn btn-primary ms-1 mb-3">Add News</a>
 
-<ul id="searchResults"></ul>
+
+
 <table class="table">
     <thead>
         <tr>

@@ -11,8 +11,9 @@ $routes->get('/', 'Pages::index');
 $routes->get('/layout/login', 'Pages::login');
 $routes->post('/','Pages::data');
 $routes->get('register','Pages::register');
-$routes->get('/layout/profile','Pages::profile');
+$routes->get('/layout/profile','UserController::profile');
 $routes->get('logout','Pages::logout');
+$routes->get('Pages/','Pages::index');
 // Routes Halaman Data Pengguna
 $routes->get('pengguna/','UserController::index');
 $routes->get('/pengguna/create','UserController::create');

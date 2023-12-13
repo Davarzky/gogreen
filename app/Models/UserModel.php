@@ -13,6 +13,13 @@ class UserModel extends Model{
         return $this->where('email', $email)->countAllResults() > 0;
     }
 
+    public function search($keyword)
+    {
+        $builder = $this->table('users');
+        $builder->like('username', $keyword);
+        return $builder;
+    }
+
     protected $table            = 'Users';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;

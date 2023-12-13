@@ -62,6 +62,8 @@
             <select name="level" id="level">
                     <option value="admin">admin</option>
                     <option value="writer">writer</option>
+                    <option value="users">users</option>
+
                 </select>
         </div>
         <div class="form-group row">

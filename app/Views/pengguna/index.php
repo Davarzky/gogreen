@@ -10,9 +10,13 @@
 <h2 class="my-3">Users Data</h2>
 <a href="<?= base_url('pengguna/create') ?>" class="btn btn-primary ms-1">Add Users data</a>
 
-<input type="text" id="searchInput" placeholder="Search">
+<form action="<?= base_url('userController/index') ?>" method="post">
+    <div class="input-group mb-3 mt-3">
+        <input type="text" class="form-control" placeholder="Masukkan kata pencarian..." name="keyword">
+        <button class="btn btn-outline-secondary" type="submit" name="submit">Search</button>
+    </div>
+</form>
 
-<ul id="searchResults"></ul>
 <table class="table">
     <thead>
         <tr>
@@ -26,8 +30,8 @@
     <tbody>
        
         <?php 
-            $i = 1;
-            foreach ($pengguna as $user):
+            $i = 1 + (6 * ($pengguna['currentPage'] - 1));
+            foreach ($pengguna['users'] as $user):
             ?>
             <tr>
                 <th scope="row"><?= $i ?></th>
@@ -48,7 +52,7 @@
         <?php $i++; endforeach; ?>
     </tbody>
 </table>
-
+    <?= $pengguna['pager']->links('users','users_pagination'); ?>
 </main>
 </section>
 

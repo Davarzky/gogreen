@@ -4,10 +4,15 @@
 
 <div class="container">
     <div class="row">
+    
         <div class="col">
+        <a href="/Pages/" class="backbutton">
+        <img src="/img/corner-up-left.svg" alt="" style="height: 30px; width:30px; margin-top:10%; ">
+        </a>
+        
             <?php if ($berita): ?>
-                <img src="<?= base_url('uploads/' . $berita['gambar']) ?>" class="card-img-top" alt="..." height="100px" width="100px">
-                <h2><?= $berita['name']; ?></h2>
+                <img src="<?= base_url('uploads/' . $berita['gambar']) ?>" class="card-img-top" alt="..." height="400px" width="200px">
+                <h2 style="margin-left:30%;"><?= $berita['name']; ?></h2>
                 <p><?= $berita['caption']; ?></p>
                 <!-- Tambahkan detail lain sesuai kebutuhan -->
             <?php else: ?>

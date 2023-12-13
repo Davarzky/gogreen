@@ -21,23 +21,40 @@ class Pages extends BaseController
 
     echo view('home', $data);
 }
-    public function profile()
-    {
-        $data = [
-            'title' => 'profile | GoGreen'
-        ];
+public function login()
+{
+    $data = [
+        'title' => 'Login | GoGreen'
+    ];
 
-        return view('/layout/profile',$data);
+    echo view('login',$data);
+} 
+    
+
+public function profile()
+{
+    $session = session();
+    $userId = $session->get('usersData')['id'];
+
+    if (!$userId) {
+        return redirect()->to('/Pages/login');
     }
 
-    public function login()
-    {
+    $model = new UserModel();
+    $user = $model->find($userId);
+
+    if ($user) {
         $data = [
-            'title' => 'Login | GoGreen'
+            'title' => 'Profile | GoGreen',
+            'user'  => $user,
         ];
 
-        echo view('login',$data);
-    } 
+        return view('/layout/profile', $data);
+    } else {
+        return redirect()->to('/Pages/login'); // Redirect ke halaman login jika user tidak ditemukan
+    }
+}
+
     
     public function processLogin()
 {
@@ -65,10 +82,13 @@ class Pages extends BaseController
                     'level'    => $user['level'],
                     'isLoggedIn' => TRUE
                 ];
-
-                $session->set('usersData',$userData); // Menyimpan data pengguna yang dibutuhkan
-
-                return redirect()->to('/Pages');
+                $session->set('usersData',$userData); 
+                    
+                if ($userData['level'] == 'admin') {
+                    return $this->redirectToDashboard();
+                } else {
+                    return $this->redirectToIndex();
+                }
             } else {
                 session()->setFlashdata('errors', ['password' => 'Password is incorrect.']);
             }
@@ -80,7 +100,20 @@ class Pages extends BaseController
     }
 
     return redirect()->to('/Pages/login');
+    
 }
+
+public function redirectToDashboard()
+    {
+        
+        return redirect()->to('dashboard');
+    }
+
+    public function redirectToIndex()
+    {
+       
+        return redirect()->to('/');
+    }
     
    
     public function register()
@@ -141,6 +174,23 @@ class Pages extends BaseController
 
         return redirect()->to('Pages/');
     }
+    public function save()
+    {
+        $model = new ContactModel(); 
+        
+        $data = [
+            'name' => $this->request->getPost('name'),
+            'email'    => $this->request->getPost('email'),
+            'subject' => $this->request->getPost('subject'),
+            'message'=> $this->request->getPost('message'),
+        ];
+    
+        if($model->save($data)){
+            return redirect()->to('Pages/')->with('pesan','Data Berhasil di Update');
+        };
+        return redirect()->back()->with('pesan','data gagal di update');
+    }
+
 
  
 }

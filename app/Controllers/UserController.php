@@ -15,31 +15,62 @@ class UserController extends BaseController
     public function index()
     {
         $model = new UserModel();
-        $data['pengguna'] = $model->findAll();
-
+        $currentPage = $this->request->getVar('page_users') ? $this->request->getVar('page_users') : 1;
+    
+        $keyword = $this->request->getPost('keyword');
+        if ($keyword) {
+            $user = $model->search($keyword)->paginate(6, 'users');
+        } else {
+            $user = $model->paginate(6, 'users');
+        }
+    
+        $data['pengguna'] = [
+            'users' => $user,
+            'pager' => $model->pager,
+            'currentPage' => $currentPage
+        ];
+    
         return view('pengguna/index', $data);
     }
-
+    
     public function create()
     {
         return view('pengguna/create');
     }
 
     public function save()
-{
-    $model = new UserModel(); 
-
-    $data = [
-        'username' => $this->request->getPost('username'),
-        'email'    => $this->request->getPost('email'),
-        'password' => $this->request->getPost('password'),
-        'level'=> $this->request->getPost('level'),
-    ];
-
-    $model->save($data);
-
-    return redirect()->to('pengguna/'); 
-}
+    {
+        helper(['form', 'url']);
+    
+        $model = new UserModel();
+    
+        $rules = [
+            'username' => 'required|is_unique[users.username]',
+            'email'    => 'required|valid_email|is_unique[users.email]',
+            'password' => 'required|min_length[6]', 
+        ];
+    
+        if ($this->validate($rules)) {
+            $data = [
+                'username' => $this->request->getPost('username'),
+                'email'    => $this->request->getPost('email'),
+                'level'    => $this->request->getPost('level'),
+                'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
+            ];
+    
+            $model->save($data);
+    
+            session()->setFlashdata('success', 'User added successfully!');
+    
+            return redirect()->to('pengguna');
+        } else {
+            session()->setFlashdata('errors', $this->validator->getErrors());
+    
+            // Jika validasi gagal, kembalikan ke halaman yang sesuai (dalam hal ini, halaman pengguna)
+            return redirect()->to('pengguna');
+        }
+    }
+    
 
 
 public function edit($id){
@@ -80,7 +111,7 @@ public function signout()
 public function profile()
 {
     $session = session();
-    $userId = $session->get('id');
+    $userId = $session->get('usersData')['id'];
 
     if (!$userId) {
         return redirect()->to('/Pages/login');
@@ -95,58 +126,64 @@ public function profile()
             'user'  => $user,
         ];
 
-        echo view('profile', $data);
+        // Render the profile page with the editing form
+        return view('/layout/profile', $data);
     } else {
-        
-         echo 'User not found';
+        return redirect()->to('/Pages/login');
     }
 }
 
-    public function updateProfile()
-    {
-        $session = session();
-        $userId = $session->get('id');
-    
-        if (!$userId) {
-            return redirect()->to('/Pages/login');
-        }
-    
-        $model = new UserModel();
-        $user = $model->find($userId);
-    
-        if ($this->request->getMethod() === 'post') {
-            $rules = [
-                'username' => 'required',
-                'email'    => 'required|valid_email',
-                'password' => 'min_length[6]',
-            ];
-    
-            if ($this->validate($rules)) {
-                $userUpdate = [
-                    'username' => $this->request->getPost('username'),
-                    'email'    => $this->request->getPost('email'),
-                ];
-    
-                if ($this->request->getPost('password')) {
-                    $userUpdate['password'] = password_hash($this->request->getVar('password'), PASSWORD_DEFAULT);
-                }
-    
-                $model->update($userId, $userUpdate);
-    
-                session()->setFlashdata('success', 'Profile updated successfully!');
-            } else {
-                session()->setFlashdata('errors', $this->validator->getErrors());
-            }
-        }
-    
-        return redirect()->to('/UserController/profile');
+public function updateProfile()
+{
+    $session = session();
+    $userId = $session->get('usersData')['id'];
+
+    if (!$userId) {
+        return redirect()->to('/Pages/login');
     }
+
+    $model = new UserModel();
+    $user = $model->find($userId);
+
+    if ($this->request->getMethod() === 'post') {
+        $rules = [
+            'username' => 'required|is_unique[users.username,id,' . $userId . ']',
+            'email'    => 'required|valid_email|is_unique[users.email,id,' . $userId . ']',
+        ];
+
+        if ($this->validate($rules)) {
+            $userUpdate = [
+                'username' => $this->request->getPost('username'),
+                'email'    => $this->request->getPost('email'),
+            ];
+
+            $model->update($userId, $userUpdate);
+
+            // Ambil data pengguna yang sudah diperbarui setelah pembaruan
+            $updatedUser = $model->find($userId);
+
+            // Simpan data pengguna yang sudah diperbarui dalam sesi
+            $session->set('usersData', $updatedUser);
+
+            session()->setFlashdata('success', 'Profil berhasil diperbarui!');
+        } else {
+            session()->setFlashdata('errors', $this->validator->getErrors());
+        }
+    }
+
+    // Redirect ke halaman profil setelah menyimpan perubahan
+    return redirect()->to('Pages/');
+}
+
+
     public function delete($id){
         $model = new UserModel();
     
         $model->delete($id);
         return redirect()->to('pengguna/')->with('pesan','Data Berhasil di Hapus');
     }
+
+
     
 }
 

@@ -45,7 +45,7 @@
 
                 <div class="card-body">
                     <h5 class="card-title"><?= $berita['name'] ?></h5>
-                    <a href="<?= base_url('news/detail')?>" class="btn btn-success">Detail</a>
+                    <a href="<?= base_url('news/detail/' . $berita['id']) ?>" class="btn btn-success">Detail</a>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -64,7 +64,7 @@
         
        
         
-        <form action="<?= base_url('/contact/save')?>"  method="post"  id="contact" name="contact">
+        <form action="<?= base_url('/Pages/save')?>"  method="post"  id="contact" name="contact">
             <h2 class="text-send">Send us a message</h2>
             <div class="line"></div>
             <div class="container">
